@@ -1,0 +1,15 @@
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\bin\Debug\net6.0\Practical2.exe
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\bin\Debug\net6.0\Practical2.deps.json
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\bin\Debug\net6.0\Practical2.runtimeconfig.json
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\bin\Debug\net6.0\Practical2.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\bin\Debug\net6.0\Practical2.pdb
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\Practical2.csproj.AssemblyReference.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\Practical2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\Practical2.AssemblyInfoInputs.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\Practical2.AssemblyInfo.cs
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\Practical2.csproj.CoreCompileInputs.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\Practical2.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\refint\Practical2.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\Practical2.pdb
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\Practical2.genruntimeconfig.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical2\Practical2\obj\Debug\net6.0\ref\Practical2.dll

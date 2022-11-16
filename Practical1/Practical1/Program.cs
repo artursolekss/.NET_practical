@@ -35,14 +35,29 @@
         //Console.WriteLine(result);
         //Console.WriteLine("You entered : " + input);
         //Console.WriteLine("You entered : {0}", input);
-        Console.WriteLine("Enter number");
+        Console.WriteLine("Enter number 1");
         string number1str = Console.ReadLine();
-        string number2str = Console.ReadLine();
-        int number1 = Int32.Parse(number1str);
-        int number2 = Int32.Parse(number2str);
-        int result = number1 + number2;
-        Console.WriteLine(result);
 
+        Console.WriteLine("Enter number 2");
+        string number2str = Console.ReadLine();
+
+        double number1 = Double.Parse(number1str);
+        double number2 = Double.Parse(number2str);
+        
+        double resultAdd = number1 + number2;
+        Console.WriteLine(number1 + " + " + number2 + " = " + resultAdd);
+
+        double resultSubstr = number1 - number2;
+        Console.WriteLine(number1 + " - " + number2 + " = " + resultSubstr);
+
+        double resultDiv = number1 / number2;
+        Console.WriteLine(number1 + " / " + number2 + " = " + resultDiv);
+
+        double resultMultip = number1 * number2;
+        Console.WriteLine(number1 + " * " + number2 + " = " + resultMultip);
+
+        //resultDiv = Math.Round(resultDiv, 2);//round in two decimal places
+        //Console.WriteLine(resultDiv);
 
 
 
