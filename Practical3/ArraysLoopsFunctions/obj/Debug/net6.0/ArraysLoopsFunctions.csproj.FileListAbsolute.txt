@@ -1,0 +1,15 @@
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\bin\Debug\net6.0\ArraysLoopsFunctions.exe
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\bin\Debug\net6.0\ArraysLoopsFunctions.deps.json
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\bin\Debug\net6.0\ArraysLoopsFunctions.runtimeconfig.json
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\bin\Debug\net6.0\ArraysLoopsFunctions.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\bin\Debug\net6.0\ArraysLoopsFunctions.pdb
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ArraysLoopsFunctions.csproj.AssemblyReference.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ArraysLoopsFunctions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ArraysLoopsFunctions.AssemblyInfoInputs.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ArraysLoopsFunctions.AssemblyInfo.cs
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ArraysLoopsFunctions.csproj.CoreCompileInputs.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ArraysLoopsFunctions.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\refint\ArraysLoopsFunctions.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ArraysLoopsFunctions.pdb
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ArraysLoopsFunctions.genruntimeconfig.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\Practical3\ArraysLoopsFunctions\obj\Debug\net6.0\ref\ArraysLoopsFunctions.dll
