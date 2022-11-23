@@ -94,11 +94,26 @@
         int time = Int32.Parse(Console.ReadLine());
         if (time >= 5 && time <9)
         {
-            Console.WriteLine("Good morning!");
+            if (time <= 7)
+            {
+                Console.WriteLine("Good early morning!");
+            }
+            else
+            {
+                Console.WriteLine("Good morning!");
+            }
         }
         else if (time >= 9 && time < 16)
         {
             Console.WriteLine("Good afternoon!");
+            if (time <= 11)
+            {
+                Console.WriteLine("Good late morning!");
+            }
+            else if(time >=12 && time <= 13)
+            {
+                Console.WriteLine("Enjoy your lunch");
+            }
         }
         else if (time < 24 && time >= 0)
         {
@@ -108,7 +123,6 @@
         {
             Console.WriteLine("Input is not valid");
         }
-
 
     }
 
