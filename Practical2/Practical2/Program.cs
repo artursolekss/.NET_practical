@@ -1,4 +1,7 @@
-﻿class Practical2
+﻿using System.Globalization;
+using System.Text;
+
+class Practical2
 {
     static void Main(string[] args)
     {
@@ -30,21 +33,21 @@
         ///list.getByIndex(index++);
         ///
 
-        bool answer;
-        answer = 13 > 7;//true
-        answer = 19 < 7;//false
-        answer = 13 >= 7;//true
-        answer = 13 > 13;//false
-        answer = 13 >= 13;//true
-        answer = 13 == 13;//true
-        answer = 13 != 13;//false != means NOT Equal to
-        answer = !true;//false (the opossite of true)
-        answer = !false;//true (the opposite of false)
-        answer = true && true;//true
-        answer = (13 >= 13) && (13 == 13);//would be the same as true && true
+        //bool answer;
+        //answer = 13 > 7;//true
+        //answer = 19 < 7;//false
+        //answer = 13 >= 7;//true
+        //answer = 13 > 13;//false
+        //answer = 13 >= 13;//true
+        //answer = 13 == 13;//true
+        //answer = 13 != 13;//false != means NOT Equal to
+        //answer = !true;//false (the opossite of true)
+        //answer = !false;//true (the opposite of false)
+        //answer = true && true;//true
+        //answer = (13 >= 13) && (13 == 13);//would be the same as true && true
 
-        answer = true && false;//false
-        answer = false && false;//false
+        //answer = true && false;//false
+        //answer = false && false;//false
 
         //double val1 = 23.6543;
         //double val2 = 56.56565;
@@ -124,7 +127,7 @@
         //    Console.WriteLine("Input is not valid");
         //}
 
-        string val = "ACD";
+        //string val = "ACD";
 
         //if(val == "BCD")
         //{
@@ -152,22 +155,72 @@
         //        break;
         //}
 
-        bool condition1 = true;
-        bool condition2 = false;
+        //bool condition1 = true;
+        //bool condition2 = false;
 
-        if (condition1)
-        {
-            Console.WriteLine("Print something");
-        }
-        else if(condition2)
-        {
-            Console.WriteLine("Print something more");
-        }
-        else
-        {
-            Console.WriteLine("Print something else");
-        }
+        //if (condition1)
+        //{
+        //    Console.WriteLine("Print something");
+        //}
+        //else if(condition2)
+        //{
+        //    Console.WriteLine("Print something more");
+        //}
+        //else
+        //{
+        //    Console.WriteLine("Print something else");
+        //}
+
+        //Console.WriteLine("Enter number");
+        //string num1str = Console.ReadLine();
+        //Console.WriteLine("Enter number again");
+        //string num2str = Console.ReadLine();
+        //int num1 = Int32.Parse(num1str);
+        //int num2 = Int32.Parse(num2str);
+        //Console.WriteLine("Enter operationacter (*/%+-) to proceed the operation");
+        //string operation = Console.ReadLine();
+
+        ////bool invalidOperation = false;
+        //int result = 0;
+
+        //switch (operation) {
+        //    case "+":
+        //    result = num1 + num2;
+        //        break;
+        //    case "-":
+        //    result = num1 - num2;
+        //        break;
+        //    case "*":
+        //    result = num1 * num2;
+        //        break;
+        //    case "/":
+        //    result = num1 / num2;
+        //        break;
+        //default:
+        //    //invalidOperation = true;
+        //    Console.WriteLine("Operation is not valid, please try again providing correct chatacter.");
+        //    return;//exit the current method (program)
+        //}
+        ////if (!invalidOperation)
+        //Console.WriteLine(num1 + operation + num2 + "=" + result);
+
+        //DateOnly date = new DateOnly();
+        //CultureInfo.CurrentCulture = new CultureInfo("en-GB");//recet the culture info for the program execution
+
+        //CultureInfo ci = new CultureInfo("en-GB");
+        //DateOnly date = DateOnly.Parse("31/12/2022",ci);
+
+        //Convert.ToDateTime(date, ci);
+        //Console.WriteLine(date.Day + "." + date.Month + "." + date.Year);
+        //CultureInfo culture = CultureInfo.CurrentCulture;
+        //Console.WriteLine(culture.Name);
+
+        Console.InputEncoding = Encoding.UTF8;
+        Console.OutputEncoding = Encoding.UTF8;
+        const char Capricorn = '\u2651';
+
+        Console.WriteLine(Capricorn);
+
 
     }
-
 }

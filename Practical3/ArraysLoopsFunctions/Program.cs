@@ -62,7 +62,6 @@
         //    Console.WriteLine("Hello");
         //}
 
-        Console.WriteLine("Enter the size of the array:");
 
         ////bool correctSize = false;
         ///for(;!corretSize;){
@@ -70,8 +69,29 @@
         ///correctSize = true;
         ///}
         ///}
-        int arraySize = Int32.Parse(Console.ReadLine());
+
+        //var val = "Something";
+        int arraySize = 0;
+        //bool arraySizeNotProvided = true;
+
+        //for (; arraySizeNotProvided;)
+        for (;;)
+        {
+            try
+            {
+                Console.WriteLine("Enter the size of the array:");
+                arraySize = Int32.Parse(Console.ReadLine());
+                //arraySizeNotProvided = false;
+                break;//goes out of the loop
+            }
+            catch
+            {
+                Console.WriteLine("Number provided is not valid");
+            }
+        }
         string[] elements = new string[arraySize];
+
+        //var valDouble = 6;
 
         for (int i = 0; i < elements.Length; i++)
         //for (int i = 0; i < arraySize; i++)//the same
@@ -81,12 +101,11 @@
             elements[i] = element;
         }
 
-        for(int i = 0; i < elements.Length; i++)
+
+        for (int i = 0; i < elements.Length; i++)
         {
             Console.WriteLine(elements[i]);
         }
-
-
     }
 
 }
