@@ -207,19 +207,33 @@ class Practical2
         //DateOnly date = new DateOnly();
         //CultureInfo.CurrentCulture = new CultureInfo("en-GB");//recet the culture info for the program execution
 
-        //CultureInfo ci = new CultureInfo("en-GB");
-        //DateOnly date = DateOnly.Parse("31/12/2022",ci);
+        CultureInfo ci = new CultureInfo("en-GB");///date-format = dd/mm/yyyy
 
+        DateOnly date;
+        try
+        {
+            Console.WriteLine("Enter the date");
+            date = DateOnly.Parse(Console.ReadLine(), ci);
+        }
+        catch
+        {
+            Console.WriteLine("Date is wrong, please, try again");
+        }
+        int day = date.Day;
+        int month = date.Month;
+        int year = date.Year;
+
+        Console.WriteLine("Year : " + year + ", Month : " + month + ", Day : " + day);
         //Convert.ToDateTime(date, ci);
         //Console.WriteLine(date.Day + "." + date.Month + "." + date.Year);
         //CultureInfo culture = CultureInfo.CurrentCulture;
         //Console.WriteLine(culture.Name);
 
-        Console.InputEncoding = Encoding.UTF8;
-        Console.OutputEncoding = Encoding.UTF8;
-        const char Capricorn = '\u2651';
+        //Console.InputEncoding = Encoding.UTF8;
+        //Console.OutputEncoding = System.Text.Encoding.UTF8;
+        //const char Capricorn = '\u2651';
 
-        Console.WriteLine(Capricorn);
+        //Console.Write("Test " + Capricorn);
 
 
     }
