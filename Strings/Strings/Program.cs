@@ -1,4 +1,6 @@
-﻿class StringsDemo
+﻿using System.Text.RegularExpressions;
+
+class StringsDemo
 {
     public static void Main(string[] args)
     {
@@ -23,13 +25,58 @@
         //}
         //Console.WriteLine("You entered " + concatenation);
 
-        string str = "A;BC;DE;T";
-        string[] arraySplit = str.Split(";");
-        foreach(string str2 in arraySplit)
-            Console.WriteLine(str2);
+        //string str = "A;BC;DE;T";
+        //string[] arraySplit = str.Split(";");
+        //foreach(string str2 in arraySplit)
+        //    Console.WriteLine(str2);
 
         //12 45 87 90 ==> get integer array int[] arr = {12,45,87,90}
 
-        Console.ReadLine();
+
+
+        //string str = "Here is the string\"";
+        //Console.WriteLine(str.ToUpper());
+        //string[] strArr = { "Element1", "Element2", "Element3" };
+        //int[] intArr = { 1, 2, 3, 4, 5 };
+        ////string concatString = String.Concat(strArr);
+        //string concatString = String.Concat(intArr) + String.Concat(strArr);//"12345"
+        //Console.WriteLine(concatString);
+        //Console.WriteLine(concatString[4]);
+
+        //string str1 = "ABC";
+        //string str2 = "DEF";
+        //string str3 = "ABCDEF";
+        //string str4 = str1 + str2;
+
+        //Console.WriteLine((str4 == str3));
+        //Console.WriteLine(str4.Equals(str3));
+        //Console.WriteLine(str4.IndexOf("c"));
+        //Console.WriteLine(str4.Substring(3,2));
+
+        //string str = null;
+        //str.ToLower();//this will trigger null reference exception
+
+        //string str = "My name is Arturs";
+        ////string strReplaced = str.Replace("Arturs", "Janis");
+        //string strReplaced = str.Replace('s', 'S');
+        //Console.WriteLine(strReplaced);
+
+        //string str = "My email is arturs.olekss@gmail.com";
+        //string strReplaced = Regex.Replace(str, @"[\w\-\.]+@([\w\-]+\.)+[\w-]{2,4}", @"new.email@gmail.com");
+        //Console.WriteLine(strReplaced);
+
+        Console.WriteLine("Please, enter your email");
+        string email = Console.ReadLine();
+        bool match = Regex.Match(email, @"^[\w\-\.]+@([\w\-]+\.)+[\w-]{2,4}$").Success;
+        if (match)
+        {
+            Console.WriteLine("Email provided is correct");
+        }
+        else
+        {
+            Console.WriteLine("Wrong email provided");
+        }
+
+
     }
 }
