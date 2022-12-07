@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AOLEKSS\\Documents\\dotnetPractical\\Alghoritms\\Alghoritms\\Alghoritms.csproj",
-      "projectName": "Alghoritms",
-      "projectPath": "C:\\Users\\AOLEKSS\\Documents\\dotnetPractical\\Alghoritms\\Alghoritms\\Alghoritms.csproj",
+      "projectUniqueName": "C:\\Users\\AOLEKSS\\Documents\\dotnetPractical\\Alghoritms\\Alghoritms\\Algorithms.csproj",
+      "projectName": "Algorithms",
+      "projectPath": "C:\\Users\\AOLEKSS\\Documents\\dotnetPractical\\Alghoritms\\Alghoritms\\Algorithms.csproj",
       "packagesPath": "C:\\Users\\AOLEKSS\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\AOLEKSS\\Documents\\dotnetPractical\\Alghoritms\\Alghoritms\\obj\\",
       "projectStyle": "PackageReference",
