@@ -65,16 +65,31 @@ class StringsDemo
         //string strReplaced = Regex.Replace(str, @"[\w\-\.]+@([\w\-]+\.)+[\w-]{2,4}", @"new.email@gmail.com");
         //Console.WriteLine(strReplaced);
 
-        Console.WriteLine("Please, enter your email");
-        string email = Console.ReadLine();
-        bool match = Regex.Match(email, @"^[\w\-\.]+@([\w\-]+\.)+[\w-]{2,4}$").Success;
-        if (match)
+        //Console.WriteLine("Please, enter your email");
+        //string email = Console.ReadLine();
+        //bool match = Regex.Match(email, @"^[\w\-\.]+@([\w\-]+\.)+[\w-]{2,4}$").Success;
+        //if (match)
+        //{
+        //    Console.WriteLine("Email provided is correct");
+        //    //(..){0,1}
+        //}
+        //else
+        //{
+        //    Console.WriteLine("Wrong email provided");
+        //}
+
+        Console.WriteLine("Please, enter your mobile phone number");
+        string phoneNo = Console.ReadLine();
+        bool matchLatvian = Regex.Match(phoneNo, @"^((\+371) {0,1}){0,1}2[0-9]{7}$").Success;
+        bool matchLithuanian = Regex.Match(phoneNo, @"^((\+370) {0,1}){0,1}6[0-9]{7}$").Success;
+        if (matchLatvian || matchLithuanian)
         {
-            Console.WriteLine("Email provided is correct");
+            Console.WriteLine("Phone number provided is correct");
+            //(..){0,1}
         }
         else
-        {
-            Console.WriteLine("Wrong email provided");
+        { 
+            Console.WriteLine("Wrong phone number provided");
         }
 
 
