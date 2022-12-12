@@ -55,22 +55,56 @@
 
         public int GetAgeDifference(Date date)//current Date - date we provide to the method/function
         {
-            int age = this.Year - date.Year;
+            int age = this.Year - date.Year;//this - Date object the function/method is called from
 
-            if((this.Month > date.Month) ||
-                (this.Month == date.Month && this.Day > date.Day))
+            if((this.Month < date.Month) ||
+                (this.Month == date.Month && this.Day < date.Day))
             {
                 age--;
             }
             return age;
         }
 
+        private Char DetermineDateSeparator(string format)
+        {
+            if (format.Contains('.'))
+                return '.';
+            else if (format.Contains('-'))
+                return '-';
+            else if (format.Contains('/'))
+                return '/';
+            else if (format.Contains(' '))
+                return ' ';
+            else if (format.Contains('_'))
+                return '_';
+            else
+                return 'X';
+        }
+
+        public Date(int day,int month,int year)
+        {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+
+        public Date(string dateStr, string format)
+        {
+            this.SetDate(dateStr, format);
+        }
+
+        public static Date ConvertStringToDate(string dateStr, string format)
+        {
+            return new Date(dateStr, format);
+        }
+
         public void SetDate(string dateStr,string format)//yyyy-dd-mm
         {
             //xx-xx-xxxx
-            string[] formatSplit = format.Split("-");
-            string[] dateSplit = dateStr.Split("-");
-            
+            char separator = this.DetermineDateSeparator(format);
+            string[] formatSplit = format.Split(separator);
+            string[] dateSplit = dateStr.Split(separator);
+          
             if (formatSplit[0] == "dd")
             {
                 this.Day = Convert.ToInt32(dateSplit[0]);

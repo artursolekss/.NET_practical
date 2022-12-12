@@ -23,6 +23,20 @@
             set { this.dateOfBirth = value; }
         }
 
+        //public Person()//Constructor
+        //{
+        //    this.name = "";
+        //    this.lastname = "";
+        //    this.dateOfBirth = new Date();
+        //}
+
+        public Person(string name, string lastname, Date dateOfBirth)
+        {
+            this.name = name;
+            this.lastname = lastname;
+            this.dateOfBirth = dateOfBirth;
+        }
+
         public string CalculateFullName()
         {
             return this.name + " " + this.lastname;
@@ -38,10 +52,10 @@
         {
             get {
 
-                Date currentDate = new Date();
+                
                 string currentDateStr = DateTime.Now.Day + "-" + DateTime.Now.Month +
                     "-" + DateTime.Now.Year;
-                currentDate.SetDate(currentDateStr, "dd-mm-yyyy");
+                Date currentDate = new Date(currentDateStr, "dd-mm-yyyy");
                 return currentDate.GetAgeDifference(this.dateOfBirth);
 
             }
@@ -49,9 +63,9 @@
 
         public void Show()
         {
-            Console.WriteLine("Name : " + this.Name);
-            Console.WriteLine("Last Name : " + this.LastName);
+            Console.WriteLine("Full Name : " + this.FullName);
             Console.WriteLine("Date of Birth : " + this.DateOfBirth.GetString());
+            Console.WriteLine("Age : " + this.Age);
         }
 
     }

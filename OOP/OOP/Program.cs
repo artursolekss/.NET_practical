@@ -16,13 +16,17 @@
             //Date date = new Date();
             //date.Day = 12; date.Month = 10; date.Year = 2020;
 
-            Person person = new Person();//create the object Person
+            //Person person = new Person();//create the object Person
+            //name = "";lastname = ""; dateOfBirth = (empty date object)
+            //name = null; lastname = null; dateOfBirth = null;
             Console.WriteLine("Enter First Name : ");
             //person.FullName = "test";//not possible, because we didn't define the setter
-            person.Name = Console.ReadLine();
+            //person.Name = Console.ReadLine();
+            string name = Console.ReadLine();
 
             Console.WriteLine("Enter Last Name : ");
-            person.LastName = Console.ReadLine();
+            //person.LastName = Console.ReadLine();
+            string lastName = Console.ReadLine();
 
             Console.WriteLine("Enter date format (ex. dd-mm-yyyy))");
             string dateFormat = Console.ReadLine();
@@ -30,11 +34,11 @@
             Console.WriteLine("Enter date of birth:");
             string dateStr = Console.ReadLine();
 
-            Date date = new Date();
-            date.SetDate(dateStr, dateFormat);//date is set for the object
+            Date date = Date.ConvertStringToDate(dateStr, dateFormat);
+            //Date date = new Date(dateStr, dateFormat);//date is set for the object
 
-            person.DateOfBirth = date;
-
+            //person.DateOfBirth = date;
+            Person person = new Person(name,lastName,date);
             person.Show();
 
         }
