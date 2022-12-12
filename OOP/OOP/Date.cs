@@ -36,7 +36,7 @@
                 if (value < 1 || value > 31)
                     Console.WriteLine("Day entered is not valid");
                 else
-                    this.month = value;
+                    this.day = value;
             }
         }
 
@@ -126,6 +126,11 @@
             }
 
 
+        }
+
+        public string GetString()
+        {
+            return this.Day + "-" + this.Month + "-" + this.Year;
         }
 
 

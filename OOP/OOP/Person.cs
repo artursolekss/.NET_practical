@@ -11,6 +11,12 @@
             set { this.name = value; }
         }
 
+        public string LastName
+        {
+            get { return this.lastname; }
+            set { this.lastname = value; } 
+        }
+
         public Date DateOfBirth
         {
             get { return this.dateOfBirth; }
@@ -30,7 +36,22 @@
 
         public int Age
         {
-            get { return 0; }
+            get {
+
+                Date currentDate = new Date();
+                string currentDateStr = DateTime.Now.Day + "-" + DateTime.Now.Month +
+                    "-" + DateTime.Now.Year;
+                currentDate.SetDate(currentDateStr, "dd-mm-yyyy");
+                return currentDate.GetAgeDifference(this.dateOfBirth);
+
+            }
+        }
+
+        public void Show()
+        {
+            Console.WriteLine("Name : " + this.Name);
+            Console.WriteLine("Last Name : " + this.LastName);
+            Console.WriteLine("Date of Birth : " + this.DateOfBirth.GetString());
         }
 
     }
