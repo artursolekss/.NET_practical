@@ -168,6 +168,11 @@
             return this.Day + "-" + this.Month + "-" + this.Year;
         }
 
+        public override string ToString()
+        {
+            return this.Day + "-" + this.Month + "-" + this.Year;
+        }
+
 
     }
 }

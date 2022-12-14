@@ -71,7 +71,7 @@
         public void Show()
         {
             Console.WriteLine("Full Name : " + this.FullName);
-            Console.WriteLine("Date of Birth : " + this.DateOfBirth.GetString());
+            Console.WriteLine("Date of Birth : " + this.DateOfBirth);//ToString method called
             Console.WriteLine("Age : " + this.Age);
         }
 
