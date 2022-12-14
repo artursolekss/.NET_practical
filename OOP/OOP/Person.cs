@@ -30,10 +30,17 @@
         //    this.dateOfBirth = new Date();
         //}
 
-        public Person(string name, string lastname, Date dateOfBirth)
+        public Person(string name, string lastname)
         {
             this.name = name;
             this.lastname = lastname;
+            this.dateOfBirth = new Date("01-01-2000", "dd-mm-yyyy");
+        }
+
+        public Person(string name, string lastname, Date dateOfBirth) : this(name,lastname)
+        {
+            //this.name = name;
+            //this.lastname = lastname;
             this.dateOfBirth = dateOfBirth;
         }
 

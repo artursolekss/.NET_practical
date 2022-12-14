@@ -53,6 +53,7 @@
             }
         }
 
+        // dateObj1 - dateObj2  --->> dateObj1.GetAgeDifference(dateObj2)
         public int GetAgeDifference(Date date)//current Date - date we provide to the method/function
         {
             int age = this.Year - date.Year;//this - Date object the function/method is called from
