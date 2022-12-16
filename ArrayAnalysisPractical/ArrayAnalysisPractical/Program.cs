@@ -130,7 +130,7 @@ class UserInput
     //define the functions needed for the Input user
     public static int EnterIntNumber()
     {
-        int input = 0;
+        int input = 0;//dummy value, will always be overwritten
         while (true)
         {
             try

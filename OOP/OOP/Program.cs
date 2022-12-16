@@ -9,9 +9,27 @@
             //OOP.TestPersons();
             //OOP.TestIndexers();
             //OOP.TestCustomArrayType();
-            OOP.TestOverloading();
+            //OOP.TestOverloading();
+            OOP.TestInh();
         }
 
+
+        static void TestInh()
+        {
+            Employee employee = new Employee("Developer","Arturs","Olekss");
+            //employee.Position = "Manager";
+            Console.WriteLine("First Name : " + employee.Name);
+            Console.WriteLine("Last Name : " + employee.LastName);
+            Console.WriteLine("Full Name : " + employee.FullName);
+            Console.WriteLine("Age : " + employee.Age);
+            Console.WriteLine("Position : " + employee.Position);
+
+            Date date = new Date("02-02-1992", "dd-mm-yyyy");
+            Person person = new Person("Alfreds", "Berzins", date);
+            Person.CompareAges(person, employee);
+            //person.protectedAttribute - protected attribute can not be accessed from outside of the class
+
+        }
 
         static void TestOverloading()
         {
