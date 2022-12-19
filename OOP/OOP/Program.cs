@@ -16,6 +16,12 @@
 
         static void TestInh()
         {
+
+            string[] arr = { "One", "Two", "Three" };
+            var arr2 = arr.ToArray();
+            Console.WriteLine(arr2[0] + arr2[1] + arr2[2]);
+
+
             Employee employee = new Employee("Developer","Arturs","Olekss");
             //employee.Position = "Manager";
             Console.WriteLine("First Name : " + employee.Name);
@@ -28,7 +34,25 @@
             Person person = new Person("Alfreds", "Berzins", date);
             Person.CompareAges(person, employee);
             //person.protectedAttribute - protected attribute can not be accessed from outside of the class
+            person.Sleep();
+            person.Sleep();
 
+            Person person2 = employee;//up-casting
+            employee.StartWork();
+            employee.Sleep();
+            employee.Position = "Programmer";
+
+            person2.Sleep();
+            person2.Sleep();
+            Console.WriteLine((employee == person2));
+
+            Employee employee2 = (Employee)person2;//down-casting - it will work, because person2 variable stores the object typed as employee
+
+            if(person is Employee)//validate if the downcast is valid
+                employee2 = (Employee) person;//this will fail, because person stores the object of the class Person, which is not sub-class of the class employee
+
+            if (employee2 is Person)//also valid
+                Console.WriteLine("Employee is the Person");
         }
 
         static void TestOverloading()

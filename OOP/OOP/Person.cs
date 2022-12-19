@@ -4,6 +4,7 @@
     {
         private string name, lastname;
         private Date dateOfBirth;
+        protected bool sleeping = false;
 
         protected string protectedAttribute;
 
@@ -103,5 +104,32 @@
             }
         }
 
+        public virtual void Sleep()
+        {
+            this.sleeping = true;
+        }
+
+        public void WakeUp()
+        {
+            this.sleeping = false;
+        }
+
+    }
+
+    class RandomClass
+    {
+        public string Name
+        {
+            get;set;
+        }
+        public string LastName
+        {
+            get; set;
+        }
+
+        public int Age
+        {
+            get;set;
+        }
     }
 }
