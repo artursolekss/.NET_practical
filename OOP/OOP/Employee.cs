@@ -1,5 +1,6 @@
 ﻿namespace OOP
 {
+    //sealed class Employee : Person // sealed means it can't be extended
     class Employee : Person
     {
         private string position;
@@ -30,7 +31,7 @@
             this.workingtime = false;
         }
 
-        public override void Sleep()
+        public sealed override void Sleep()//if the method is defined as sealed, we can't override it anymore
         {
             if (this.workingtime)
                 Console.WriteLine("It's working time, no time for sleep!");

@@ -85,6 +85,12 @@
             CompareAges(this, person);
         }
 
+        //Overload is not valid this way, because Employee is also the Person
+        //public static void CompareAges(Employee employee,Employee employee1)
+        //{
+
+        //}
+
         public static void CompareAges(Person person1,Person person2)
         {
             int ageDiff = person1.Age - person2.Age;
@@ -104,9 +110,10 @@
             }
         }
 
-        public virtual void Sleep()
+        public virtual void Sleep()//virtual means it can be overriden in the sub-classes
         {
             this.sleeping = true;
+            Console.WriteLine("Good night!");
         }
 
         public void WakeUp()

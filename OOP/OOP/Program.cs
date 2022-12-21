@@ -11,9 +11,7 @@
             //OOP.TestCustomArrayType();
             //OOP.TestOverloading();
             OOP.TestInh();
-        }
-
-
+        } 
         static void TestInh()
         {
 
@@ -23,6 +21,8 @@
 
 
             Employee employee = new Employee("Developer","Arturs","Olekss");
+            
+            
             //employee.Position = "Manager";
             Console.WriteLine("First Name : " + employee.Name);
             Console.WriteLine("Last Name : " + employee.LastName);
@@ -53,6 +53,16 @@
 
             if (employee2 is Person)//also valid
                 Console.WriteLine("Employee is the Person");
+
+
+            Console.WriteLine("\n\nCHECK NOT OVERWRITTEN METHODS");
+            Person personNew = employee;
+            Employee employeeNew = employee;
+
+            object obj = employee;
+            personNew.Sleep();
+            employeeNew.Sleep();
+
         }
 
         static void TestOverloading()
