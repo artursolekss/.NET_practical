@@ -1,0 +1,15 @@
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\bin\Debug\net6.0\DistrictOfficers.exe
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\bin\Debug\net6.0\DistrictOfficers.deps.json
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\bin\Debug\net6.0\DistrictOfficers.runtimeconfig.json
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\bin\Debug\net6.0\DistrictOfficers.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\bin\Debug\net6.0\DistrictOfficers.pdb
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\DistrictOfficers.csproj.AssemblyReference.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\DistrictOfficers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\DistrictOfficers.AssemblyInfoInputs.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\DistrictOfficers.AssemblyInfo.cs
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\DistrictOfficers.csproj.CoreCompileInputs.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\DistrictOfficers.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\refint\DistrictOfficers.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\DistrictOfficers.pdb
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\DistrictOfficers.genruntimeconfig.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\DistrictOfficers\DistrictOfficers\obj\Debug\net6.0\ref\DistrictOfficers.dll
