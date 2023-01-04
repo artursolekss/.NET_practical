@@ -1,33 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace DistrictOfficers
+﻿namespace DistrictOfficers
 {
-    public class Officer
+    public class Officer : Person
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        //public string Name { get; set; }
+        //public string Surname { get; set; }
         public int OfficerId { get; set; }
         public string WorkingDistrict { get; set; }
         public int CrimesSolved { get; set; }
 
         public Officer()
         {
-            this.Name = "";
-            this.Surname = "";
+            //this.Name = "";
+            //this.Surname = "";
             this.WorkingDistrict = "";
         }
 
         public Officer(string name,string surname,string workingDistrict,
-            int officerId,int crimesSolved)
+            int officerId,int crimesSolved) : base(name,surname)
         {
-            this.Name = name;
-            this.Surname = surname;
+            //this.Name = name;
+            //this.Surname = surname;
             this.OfficerId = officerId;
             this.WorkingDistrict = workingDistrict;
             this.CrimesSolved = crimesSolved;
@@ -60,11 +52,10 @@ namespace DistrictOfficers
 
         public override string ToString()
         {
-            string details = "Name: " + this.Name + " ; " +
-                "Surname: " + this.Surname + " ; " +
+            string details =
                 "OfficerID: " + this.OfficerId
              + " ; " + " Crimes solved: " + this.CrimesSolved + "\n";
-            return details;
+            return base.ToString() + ";" +  details;
         }
 
 

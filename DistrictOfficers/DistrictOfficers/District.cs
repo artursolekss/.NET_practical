@@ -74,12 +74,22 @@ namespace DistrictOfficers
             float avrgDist1 = district1.AverageLevel;
             float avrgDist2 = district2.AverageLevel;
             if (avrgDist1 > avrgDist2)
-                Console.WriteLine("District 1 is better than District 2");
+                Console.WriteLine(district1.Title 
+                    +  " is better than " + district2.Title);
             else if (avrgDist1 < avrgDist2)
-                Console.WriteLine("District 2 is better than District 1");
+                Console.WriteLine(district2.Title 
+                    + " is better than " + district1.Title );
             else
-                Console.WriteLine("The average level of both districts is the same");  
+                Console.WriteLine("The average level of " + district1.Title 
+                    + " and " + district2.Title
+                    + " is the same");  
 
+        }
+
+        public void PrintAllOfficers()
+        {
+            foreach (var officer in this.officersInDistrict)
+                Console.WriteLine(officer);
         }
 
         public static float CalculateAverageLvl(District district1,
