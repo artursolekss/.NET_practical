@@ -1,0 +1,15 @@
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\bin\Debug\net6.0\FilesExamples.exe
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\bin\Debug\net6.0\FilesExamples.deps.json
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\bin\Debug\net6.0\FilesExamples.runtimeconfig.json
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\bin\Debug\net6.0\FilesExamples.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\bin\Debug\net6.0\FilesExamples.pdb
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\FilesExamples.csproj.AssemblyReference.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\FilesExamples.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\FilesExamples.AssemblyInfoInputs.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\FilesExamples.AssemblyInfo.cs
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\FilesExamples.csproj.CoreCompileInputs.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\FilesExamples.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\refint\FilesExamples.dll
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\FilesExamples.pdb
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\FilesExamples.genruntimeconfig.cache
+C:\Users\AOLEKSS\Documents\dotnetPractical\FilesExamples\FilesExamples\obj\Debug\net6.0\ref\FilesExamples.dll
