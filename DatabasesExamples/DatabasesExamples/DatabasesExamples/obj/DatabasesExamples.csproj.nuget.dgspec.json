@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\FilesExamples\\FilesExamples\\FilesExamples.csproj": {}
+    "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\FilesExamples\\FilesExamples\\FilesExamples.csproj": {
+    "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\FilesExamples\\FilesExamples\\FilesExamples.csproj",
-        "projectName": "FilesExamples",
-        "projectPath": "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\FilesExamples\\FilesExamples\\FilesExamples.csproj",
+        "projectUniqueName": "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples.csproj",
+        "projectName": "DatabasesExamples",
+        "projectPath": "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples.csproj",
         "packagesPath": "C:\\Users\\arturs.olekss\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\FilesExamples\\FilesExamples\\obj\\",
+        "outputPath": "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

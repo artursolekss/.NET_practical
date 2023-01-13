@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "b0LQA6v2ckTyeQ41ev6cUJe0aAiB0MNKWOIOSBHRjtYQ71T6GCm88npOrbi6X6PwKb6pHc4UyPNPClIx3BBb1A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples\\DatabasesExamples.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\arturs.olekss\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512"
+  ],
+  "logs": []
+}
