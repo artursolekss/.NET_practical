@@ -5,34 +5,36 @@
          "employees":[
             {
                "name":"Janis",
-               "startdate":"01-01-2015"
+               "startdate":"2015-01-01"
             },
             {
                "name":"Jack",
-               "startdate":"07-01-2017"
+               "startdate":"2017-07-01"
             },
             {
                "name":"Ilze",
-               "startdate":"07-07-2019"
+               "startdate":"2019-07-07"
             }
-         ]
+         ],
+		 "externalId": "1"
       },
       {
          "name":"Department2",
 		 "employees":[
             {
                "name":"Bjork",
-               "startdate":"01-01-2013"
+               "startdate":"2013-01-01"
             },
             {
                "name":"Peter",
-               "startdate":"07-08-2014"
+               "startdate":"2014-07-08"
             },
             {
                "name":"Nils",
-               "startdate":"07-03-2019"
+               "startdate":"2019-07-03"
             }
-         ]
+         ],
+		  "externalId": "2"
       }
    ]
 }

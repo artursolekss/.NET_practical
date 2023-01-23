@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using System;
 using System.Data;
 using System.Text;
 using System.Text.Json;
@@ -14,9 +15,9 @@ class Program
         //Separator = Console.ReadLine();
         Console.WriteLine("Enter the file path:");
         string myFilePath = Console.ReadLine();
-        string myFile = File.ReadAllText(myFilePath);
-        Program.MigrateDepartemnts(myFile);
-        Console.WriteLine(myFile);
+        //string myFile = File.ReadAllText(myFilePath);
+        //Program.MigrateDepartemntsFromJson(myFile);
+        Program.ExtractToJson(myFilePath);
         //string[] fileLines = myFile.Split(Environment.NewLine);//split by lines
 
         //LinkedList<Person> personList = new LinkedList<Person>();
@@ -61,9 +62,118 @@ class Program
 
     }
 
-    public static void MigrateDepartemnts(string fileContent)
+    public static void MigrateDepartemntsFromJson(string fileContent)
     {
         AllDepartements allDepartements = JsonSerializer.Deserialize<AllDepartements>(fileContent);
+        Program.MigrateDepartements(allDepartements);
+    }
+
+    public static void MigrateDepartements(AllDepartements allDepartements)
+    {
+        string connectionString = "server=localhost;uid=root;database=dotnetdemo";
+        MySqlConnection connection = new MySqlConnection(connectionString);
+        connection.Open();
+        List<Department> departments = allDepartements.allDepartments;
+        foreach (Department department in departments)
+        {
+            string name = department.name;
+            MySqlCommand mySqlCommand = connection.CreateCommand();
+
+            //Prepared statement
+            mySqlCommand.CommandText = "INSERT INTO departments (name,external_id) " +
+                "VALUES (@name,@ext_id); select id from departments where external_id = @ext_id";
+
+
+            MySqlParameter namePar = new MySqlParameter("@name", MySqlDbType.String);
+            namePar.Value = name;
+            mySqlCommand.Parameters.Add(namePar);
+
+            MySqlParameter extIdPar = new MySqlParameter("@ext_id", MySqlDbType.String);
+            extIdPar.Value = department.externalId;
+            mySqlCommand.Parameters.Add(extIdPar);
+
+            int departId = (int)mySqlCommand.ExecuteScalar();//return the inserted ID
+
+            foreach(var employee in department.employees)
+            {
+                MySqlCommand mySqlCommandEmployee = connection.CreateCommand();
+                mySqlCommandEmployee.CommandText = "INSERT INTO employees (name,dep,start_date) " +
+                "VALUES (@name,@dep,@startDate)";
+
+                MySqlParameter employeeNamePar = 
+                    new MySqlParameter("@name", MySqlDbType.String);
+                employeeNamePar.Value = employee.name;
+                mySqlCommandEmployee.Parameters.Add(employeeNamePar);
+
+                MySqlParameter employeeDepPar =
+                   new MySqlParameter("@dep", MySqlDbType.String);
+                employeeDepPar.Value = departId;
+                mySqlCommandEmployee.Parameters.Add(employeeDepPar);
+
+                MySqlParameter employeeStartDatePar =
+                  new MySqlParameter("@startDate", MySqlDbType.String);
+                employeeStartDatePar.Value = employee.startdate;
+                mySqlCommandEmployee.Parameters.Add(employeeStartDatePar);
+
+                mySqlCommandEmployee.ExecuteNonQuery();
+            }
+
+        }
+
+
+        connection.Close();
+    }
+
+    public static void ExtractToJson(string filePath)
+    {
+        string connectionString = "server=localhost;uid=root;database=dotnetdemo";
+        MySqlConnection connection = new MySqlConnection(connectionString);
+        connection.Open();
+        MySqlCommand command = connection.CreateCommand();
+        command.CommandText = "SELECT * FROM departments";
+        var departmentsResult = command.ExecuteReader();
+
+        AllDepartements allDepartements = new AllDepartements();
+        allDepartements.allDepartments = new List<Department>();
+        while (departmentsResult.Read())
+        {
+            Department department = new Department();
+            allDepartements.allDepartments.Add(department);
+            department.name = departmentsResult.GetString("name");
+            department.externalId = departmentsResult.GetString("external_id");
+            department.id = departmentsResult.GetInt32("id");
+            department.employees = new List<Employee>();
+        }
+
+        foreach(var department in allDepartements.allDepartments) {
+            connection.Close();
+
+            connection.Open();
+
+            MySqlCommand employeesCmd = connection.CreateCommand();
+            employeesCmd.CommandText = "SELECT * FROM employees WHERE dep = @dep";
+
+            MySqlParameter depParam = new MySqlParameter("@dep", MySqlDbType.Int32);
+            depParam.Value = department.id;
+            employeesCmd.Parameters.Add(depParam);
+
+            var employeeResult = employeesCmd.ExecuteReader();
+            while (employeeResult.Read())
+            {
+                Employee employee = new Employee();
+                employee.name = employeeResult.GetString("name");
+                DateTime dateTime = employeeResult.GetDateTime("start_date");
+                string dateStr = dateTime.Year + "-" + dateTime.Month + "-" + dateTime.Day;
+                employee.startdate = dateStr;
+                department.employees.Add(employee);
+            }
+
+        }
+
+
+        connection.Close();
+        string jsonContent = JsonSerializer.Serialize(allDepartements);
+        File.WriteAllText(filePath,jsonContent);
     }
 
 
@@ -96,7 +206,7 @@ class Program
             mySqlCommand.Parameters.Add(extIdParam);
 
             count += mySqlCommand.ExecuteNonQuery();
-         
+
         }
         Console.WriteLine(count + " rows added");
         connection.Close();
@@ -153,8 +263,8 @@ class Program
         int id = Int32.Parse(Console.ReadLine());
         Person personToDelete = new Person();
         bool personFound = false;
-        foreach(var person in persons)
-            if(person.Id == id)
+        foreach (var person in persons)
+            if (person.Id == id)
             {
                 personToDelete = person;
                 personFound = true;
@@ -165,43 +275,43 @@ class Program
             persons.Remove(personToDelete);
         else
             Console.WriteLine("Entry does not exist");
-        
+
     }
 
 }
 
-   public struct Person
+public struct Person
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string LastName { get; set; }
+
+    public Person(int id, string name, string lastname)
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-
-        public Person(int id,string name,string lastname)
-        {
-            Id = id;
-            Name = name;
-            LastName = lastname;
-        }
-
-        public override string ToString()
-        {
-            return "ID : " + this.Id + "; Name : "
-                + this.Name + "; Last Name : " + this.LastName;
-        }
-
-        public static string GenerateCsvFile(LinkedList<Person> list)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("ID"+ Program.Separator + "Name" + 
-                Program.Separator + "Last Name");//header line
-            foreach (Person person in list)
-                stringBuilder.AppendLine(person.Id +
-                    Program.Separator + person.Name + Program.Separator
-                    + person.LastName);
-
-            return stringBuilder.ToString();
-        }
+        Id = id;
+        Name = name;
+        LastName = lastname;
     }
+
+    public override string ToString()
+    {
+        return "ID : " + this.Id + "; Name : "
+            + this.Name + "; Last Name : " + this.LastName;
+    }
+
+    public static string GenerateCsvFile(LinkedList<Person> list)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.AppendLine("ID" + Program.Separator + "Name" +
+            Program.Separator + "Last Name");//header line
+        foreach (Person person in list)
+            stringBuilder.AppendLine(person.Id +
+                Program.Separator + person.Name + Program.Separator
+                + person.LastName);
+
+        return stringBuilder.ToString();
+    }
+}
 
 
 class AllDepartements
@@ -212,6 +322,10 @@ class Department
 {
     public string name { get; set; }
     public List<Employee> employees { get; set; }
+
+    public string externalId { get; set; }
+
+    public int id { get; set; }
 }
 
 class Employee
@@ -221,14 +335,14 @@ class Employee
 
 }
 
-    //class Person
-    //{
-    //    public string Name { get; set; }
-    //    public string LastName { get; set; }
+//class Person
+//{
+//    public string Name { get; set; }
+//    public string LastName { get; set; }
 
-    //    public Person(string name, string lastName)
-    //    {
-    //        this.Name = name;
-    //        this.LastName = lastName;
-    //    }
-    //}
+//    public Person(string name, string lastName)
+//    {
+//        this.Name = name;
+//        this.LastName = lastName;
+//    }
+//}
