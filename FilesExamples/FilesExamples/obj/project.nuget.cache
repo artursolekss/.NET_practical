@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lVjFwjN+rhF9DFGFT/7d1fnSKN2PhSzbp9a0yqPqsNOQrdTqCn3Jwzb0TDehD2N/QMGXhrhnXCk3Z4nhJ8xoAA==",
+  "dgSpecHash": "zWfHbiIkXEhcP74oa9ZUc404dyQYctyovbUjVh2El/eQIpgb9fksN4OmCCjnYzHd0mkAWXiuEjPBWaUw3Cfu/A==",
   "success": true,
   "projectFilePath": "C:\\Users\\arturs.olekss\\OneDrive - Grupo VASS\\Documents\\dotNET\\FilesExamples\\FilesExamples\\FilesExamples.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\arturs.olekss\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512"
+  ],
   "logs": []
 }

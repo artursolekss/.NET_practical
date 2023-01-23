@@ -1,56 +1,105 @@
-﻿using System.Text;
+﻿using MySqlConnector;
+using System.Data;
+using System.Text;
+using System.Text.Json;
 
 class Program
 {
     public static string Separator { get; set; }
 
+
     public static void Main(string[] args)
     {
-        Console.WriteLine("Enter the list separator:");
-        Separator = Console.ReadLine();
+        //Console.WriteLine("Enter the list separator:");
+        //Separator = Console.ReadLine();
         Console.WriteLine("Enter the file path:");
         string myFilePath = Console.ReadLine();
         string myFile = File.ReadAllText(myFilePath);
+        Program.MigrateDepartemnts(myFile);
+        Console.WriteLine(myFile);
+        //string[] fileLines = myFile.Split(Environment.NewLine);//split by lines
 
-        string[] fileLines = myFile.Split(Environment.NewLine);//split by lines
+        //LinkedList<Person> personList = new LinkedList<Person>();
 
-        LinkedList<Person> personList = new LinkedList<Person>();
+        //for (int i = 1; i < fileLines.Length; i++)//i=1 because we skip the header line
+        //{
+        //    string[] lineFields = fileLines[i].Split(Separator);
+        //    if (lineFields.Length != 3)
+        //        continue;//skip this line
+        //    Person person = new Person();
+        //    person.Id = Int32.Parse(lineFields[0]);
+        //    person.Name = lineFields[1];
+        //    person.LastName = lineFields[2];
+        //    personList.AddLast(person);
+        //}
 
-        for (int i = 1; i < fileLines.Length; i++)//i=1 because we skip the header line
+        //Console.WriteLine("What do you want to do?");
+        //Console.WriteLine("I - insert, M - modify, D - delete,Migr - Migrate");
+        //switch (Console.ReadLine())
+        //{
+        //    case "I":
+        //        Program.AddRow(personList);
+        //        break;
+        //    case "M":
+        //        Program.ModifyRow(personList);
+        //        break;
+        //    case "D":
+        //        Program.DeleteRow(personList);
+        //        break;
+        //    case "Migr":
+        //        Program.MigrateFromFile(personList);
+        //        break;
+        //    default:
+        //        Console.WriteLine("Operation is not valid");
+        //        break;
+        //}
+
+        //string modifiedFile = Person.GenerateCsvFile(personList);
+
+        //File.WriteAllText(myFilePath, modifiedFile);
+        //Console.WriteLine("File is modified");
+
+    }
+
+    public static void MigrateDepartemnts(string fileContent)
+    {
+        AllDepartements allDepartements = JsonSerializer.Deserialize<AllDepartements>(fileContent);
+    }
+
+
+    public static void MigrateFromFile(LinkedList<Person> personList)
+    {
+        string connectionString = "server=localhost;uid=root;database=dotnetdemo";
+        MySqlConnection connection = new MySqlConnection(connectionString);
+        connection.Open();
+
+
+        int count = 0;
+        foreach (var person in personList)
         {
-            string[] lineFields = fileLines[i].Split(Separator);
-            if (lineFields.Length != 3)
-                continue;//skip this line
-            Person person = new Person();
-            person.Id = Int32.Parse(lineFields[0]);
-            person.Name = lineFields[1];
-            person.LastName = lineFields[2];
-            personList.AddLast(person);
+            MySqlCommand mySqlCommand = connection.CreateCommand();
+
+            //Prepared statement
+            mySqlCommand.CommandText = "INSERT INTO persons (firstname, lastname, externalid) " +
+                "VALUES (@firstname,@lastname,@externalid)";
+
+            MySqlParameter firstNameParam = new MySqlParameter("@firstname", MySqlDbType.String);
+            firstNameParam.Value = person.Name;
+            mySqlCommand.Parameters.Add(firstNameParam);
+
+            MySqlParameter lastNameParam = new MySqlParameter("@lastname", MySqlDbType.String);
+            lastNameParam.Value = person.LastName;
+            mySqlCommand.Parameters.Add(lastNameParam);
+
+            MySqlParameter extIdParam = new MySqlParameter("@externalid", MySqlDbType.Int32);
+            extIdParam.Value = person.Id;
+            mySqlCommand.Parameters.Add(extIdParam);
+
+            count += mySqlCommand.ExecuteNonQuery();
+         
         }
-
-        Console.WriteLine("What do you want to do?");
-        Console.WriteLine("I - insert, M - modify, D - delete");
-        switch (Console.ReadLine())
-        {
-            case "I":
-                Program.AddRow(personList);
-                break;
-            case "M":
-                Program.ModifyRow(personList);
-                break;
-            case "D":
-                Program.DeleteRow(personList);
-                break;
-            default:
-                Console.WriteLine("Operation is not valid");
-                break;
-        }
-
-        string modifiedFile = Person.GenerateCsvFile(personList);
-
-        File.WriteAllText(myFilePath, modifiedFile);
-        Console.WriteLine("File is modified");
-
+        Console.WriteLine(count + " rows added");
+        connection.Close();
     }
 
     public static void AddRow(LinkedList<Person> personList)
@@ -153,6 +202,24 @@ class Program
             return stringBuilder.ToString();
         }
     }
+
+
+class AllDepartements
+{
+    public List<Department> allDepartments { get; set; }
+}
+class Department
+{
+    public string name { get; set; }
+    public List<Employee> employees { get; set; }
+}
+
+class Employee
+{
+    public string name { get; set; }
+    public string startdate { get; set; }
+
+}
 
     //class Person
     //{

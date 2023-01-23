@@ -6,7 +6,72 @@ class Program
     public static void Main(string[] args)
     {
 
-        DatabaseWhereSelection();
+        //DatabaseWhereSelection();
+
+        Console.WriteLine("What operation do you want to perform (S - selection, I - insertion)?");
+        string operation = Console.ReadLine();
+
+        switch (operation)
+        {
+            case "S":
+                DataBaseFullSelection();
+                break;
+            case "I":
+                DatabaseInsertion();
+                break;
+            default:
+                Console.WriteLine("The operation isn't valid");
+                break;
+
+        }
+        //DatabaseInsertion();
+        //DataBaseFullSelection();
+
+    }
+
+    private static void DatabaseInsertion()
+    {
+        string connectionString = "server=localhost;uid=root;database=dotnetdemo";
+        MySqlConnection connection = new MySqlConnection(connectionString);
+        connection.Open();
+
+        Console.WriteLine("Enter the First Name");
+        string name = Console.ReadLine();
+
+        Console.WriteLine("Enter the Last Name");
+        string lastname = Console.ReadLine();
+
+        Console.WriteLine("Enter the Email");
+        string email = Console.ReadLine();
+
+        Console.WriteLine("Enter the Phone");
+        string phone = Console.ReadLine();
+
+        MySqlCommand mySqlCommand = connection.CreateCommand();
+
+        //Prepared statement
+        mySqlCommand.CommandText = "INSERT INTO customer (firstname, lastname, email, phone) " +
+            "VALUES (@firstname,@lastname,@email,@phone)";
+
+        MySqlParameter firstNameParam = new MySqlParameter("@firstname", MySqlDbType.String);
+        firstNameParam.Value = name;
+        mySqlCommand.Parameters.Add(firstNameParam);
+
+        MySqlParameter lastNameParam = new MySqlParameter("@lastname", MySqlDbType.String);
+        lastNameParam.Value = lastname;
+        mySqlCommand.Parameters.Add(lastNameParam);
+
+        MySqlParameter emailParam = new MySqlParameter("@email", MySqlDbType.String);
+        emailParam.Value = email;
+        mySqlCommand.Parameters.Add(emailParam);
+
+        MySqlParameter phoneParam = new MySqlParameter("@phone", MySqlDbType.String);
+        phoneParam.Value = phone;
+        mySqlCommand.Parameters.Add(phoneParam);
+
+        Console.WriteLine(mySqlCommand.ExecuteNonQuery() + " rows added");
+
+        connection.Close();
 
     }
 
