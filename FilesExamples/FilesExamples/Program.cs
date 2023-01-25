@@ -3,6 +3,8 @@ using System;
 using System.Data;
 using System.Text;
 using System.Text.Json;
+using System.Xml;
+using System.Xml.Schema;
 
 class Program
 {
@@ -15,9 +17,27 @@ class Program
         //Separator = Console.ReadLine();
         Console.WriteLine("Enter the file path:");
         string myFilePath = Console.ReadLine();
-        //string myFile = File.ReadAllText(myFilePath);
+        string myFile = File.ReadAllText(myFilePath);
+        //Console.WriteLine(myFile);
+
+        //Console.WriteLine("Enter the XSD file path:");
+        //string myFilePathXsd = Console.ReadLine();
+        //string myFileXsd = File.ReadAllText(myFilePathXsd);
+
+        //XmlSchemaSet schemas = new XmlSchemaSet();
+        //schemas.Add(null, myFilePathXsd);
+
+        MigrateDepartemntsFromXml(myFile);
+   
+        //string msg = 
+        //xmlFile.Validate(schemas, (o,e) =>
+        //{
+
+        //});
+
+        //Console.WriteLine(myFileXsd);
         //Program.MigrateDepartemntsFromJson(myFile);
-        Program.ExtractToJson(myFilePath);
+        //Program.ExtractToJson(myFilePath);
         //string[] fileLines = myFile.Split(Environment.NewLine);//split by lines
 
         //LinkedList<Person> personList = new LinkedList<Person>();
@@ -67,6 +87,55 @@ class Program
         AllDepartements allDepartements = JsonSerializer.Deserialize<AllDepartements>(fileContent);
         Program.MigrateDepartements(allDepartements);
     }
+
+    public static void MigrateDepartemntsFromXml(string fileContent)
+    {
+        XmlDocument xmlFile = new XmlDocument();
+        xmlFile.LoadXml(fileContent);
+        var rootNode = xmlFile.GetElementsByTagName("allDepartments")[0];
+        var allDeparmentsNodes = rootNode.ChildNodes;
+
+        AllDepartements allDepartements = new AllDepartements();
+        allDepartements.allDepartments = new List<Department>();
+        foreach(XmlNode departmentNode in allDeparmentsNodes)
+        {
+            if (departmentNode.Name != "Department")
+                continue;
+
+            Department department = new Department();
+            department.name = departmentNode.Attributes.GetNamedItem("name").Value;
+            department.employees = new List<Employee>();
+            allDepartements.allDepartments.Add(department);
+
+            var childNotes = departmentNode.ChildNodes;
+            foreach(XmlNode departmentChildNode in childNotes)
+            {
+                if(departmentChildNode.Name == "externalId")
+                {
+                    department.externalId = departmentChildNode.InnerText;
+                }
+                else if(departmentChildNode.Name == "employee")
+                {
+                    Employee employee = new Employee();
+                    department.employees.Add(employee);
+                    var employeePropertyNodes = departmentChildNode.ChildNodes;
+                    foreach(XmlNode employeePropertyNode in employeePropertyNodes)
+                    {
+                        if (employeePropertyNode.Name == "name")
+                            employee.name = employeePropertyNode.InnerText;
+                        else if (employeePropertyNode.Name == "startdate")
+                            employee.startdate = employeePropertyNode.InnerText;
+                    }
+                }
+
+            }
+
+        }
+        MigrateDepartements(allDepartements);
+
+
+    }
+
 
     public static void MigrateDepartements(AllDepartements allDepartements)
     {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<allDepartments>
+  <Department name="Department1">
+    <employee>
+      <name>Janis</name>
+      <startdate>2015-01-01</startdate>
+    </employee>
+    <employee>
+      <name>Jack</name>
+      <startdate>2017-07-01</startdate>
+    </employee>
+    <employee>
+      <name>Ilze</name>
+      <startdate>2019-07-07</startdate>
+    </employee>
+    <externalId>1</externalId>
+  </Department>
+  <Department name="Department2">
+    <employee>
+      <name>Bjork</name>
+      <startdate>2013-01-01</startdate>
+    </employee>
+    <employee>
+      <name>Peter</name>
+      <startdate>2014-07-08</startdate>
+    </employee>
+    <employee>
+      <name>Nils</name>
+      <startdate>2019-07-03</startdate>
+    </employee>
+    <externalId>2</externalId>
+  </Department>
+</allDepartments>
