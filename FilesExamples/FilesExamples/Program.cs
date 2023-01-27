@@ -17,23 +17,42 @@ class Program
         //Separator = Console.ReadLine();
         Console.WriteLine("Enter the file path:");
         string myFilePath = Console.ReadLine();
-        string myFile = File.ReadAllText(myFilePath);
-        //Console.WriteLine(myFile);
+        ExtractToXml(myFilePath);
+        //string myFile = File.ReadAllText(myFilePath);
+        ////Console.WriteLine(myFile);
 
         //Console.WriteLine("Enter the XSD file path:");
         //string myFilePathXsd = Console.ReadLine();
-        //string myFileXsd = File.ReadAllText(myFilePathXsd);
+        ////string myFileXsd = File.ReadAllText(myFilePathXsd);
 
-        //XmlSchemaSet schemas = new XmlSchemaSet();
-        //schemas.Add(null, myFilePathXsd);
+        //XmlSchemaSet schemaSet = new XmlSchemaSet();
+        //schemaSet.Add(null, myFilePathXsd);
+        //schemaSet.Compile();
 
-        MigrateDepartemntsFromXml(myFile);
-   
-        //string msg = 
-        //xmlFile.Validate(schemas, (o,e) =>
+        //XmlDocument xmlFile = new XmlDocument();
+        //xmlFile.LoadXml(myFile);
+
+        //xmlFile.Schemas = schemaSet;
+
+        //bool validXml = true;
+
+        //xmlFile.Validate((sender, e) =>
         //{
-
+        //    //validation error occurs
+        //    validXml = false;
+        //    Console.WriteLine(e.Message);
         //});
+
+
+        //if (!validXml)
+        //    return;//exit the program
+
+        //    Console.WriteLine("XML is valid");
+        //else
+        //    Console.WriteLine("XML is invalid");
+
+        //MigrateDepartemntsFromXml(xmlFile);
+   
 
         //Console.WriteLine(myFileXsd);
         //Program.MigrateDepartemntsFromJson(myFile);
@@ -88,10 +107,8 @@ class Program
         Program.MigrateDepartements(allDepartements);
     }
 
-    public static void MigrateDepartemntsFromXml(string fileContent)
+    public static void MigrateDepartemntsFromXml(XmlDocument xmlFile)
     {
-        XmlDocument xmlFile = new XmlDocument();
-        xmlFile.LoadXml(fileContent);
         var rootNode = xmlFile.GetElementsByTagName("allDepartments")[0];
         var allDeparmentsNodes = rootNode.ChildNodes;
 
@@ -195,6 +212,13 @@ class Program
 
     public static void ExtractToJson(string filePath)
     {
+        var allDepartements = GetAllDepartementsFromDB();
+        string jsonContent = JsonSerializer.Serialize(allDepartements);
+        File.WriteAllText(filePath,jsonContent);
+    }
+
+    public static AllDepartements GetAllDepartementsFromDB()
+    {
         string connectionString = "server=localhost;uid=root;database=dotnetdemo";
         MySqlConnection connection = new MySqlConnection(connectionString);
         connection.Open();
@@ -214,7 +238,8 @@ class Program
             department.employees = new List<Employee>();
         }
 
-        foreach(var department in allDepartements.allDepartments) {
+        foreach (var department in allDepartements.allDepartments)
+        {
             connection.Close();
 
             connection.Open();
@@ -241,11 +266,39 @@ class Program
 
 
         connection.Close();
-        string jsonContent = JsonSerializer.Serialize(allDepartements);
-        File.WriteAllText(filePath,jsonContent);
+        return allDepartements;
     }
 
+    public static void ExtractToXml(string filePath)
+    {
+        var allDepartements = GetAllDepartementsFromDB();
+        XmlWriterSettings settings = new XmlWriterSettings();
+        settings.Encoding = System.Text.Encoding.UTF8;
 
+
+        XmlWriter xmlWriter = XmlWriter.Create(filePath,settings);
+        xmlWriter.WriteStartDocument();
+        xmlWriter.WriteStartElement("allDepartments");//rootElement
+
+        foreach(var department in allDepartements.allDepartments)
+        {
+            xmlWriter.WriteStartElement("Department");
+            xmlWriter.WriteAttributeString("name", department.name);
+            foreach(var employee in department.employees)
+            {
+                xmlWriter.WriteStartElement("employee");
+                xmlWriter.WriteElementString("name", employee.name);
+                xmlWriter.WriteElementString("startdate", employee.startdate);
+                xmlWriter.WriteEndElement();
+            }
+
+            xmlWriter.WriteEndElement();
+        }
+
+        xmlWriter.WriteEndElement();
+        xmlWriter.WriteEndDocument();
+        xmlWriter.Close();
+    }
     public static void MigrateFromFile(LinkedList<Person> personList)
     {
         string connectionString = "server=localhost;uid=root;database=dotnetdemo";
